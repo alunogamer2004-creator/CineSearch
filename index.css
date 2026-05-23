@@ -414,3 +414,391 @@ button{
         justify-content:center;
     }
 }
+/* GRID FILMES */
+
+.movies-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:1.5rem;
+}
+
+/* CARD */
+
+.movie-card{
+    position:relative;
+
+    background:var(--bg-card);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+
+    box-shadow:var(--shadow);
+}
+
+.movie-card:hover{
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    border-color:
+    rgba(232,176,75,.45);
+
+    box-shadow:
+    0 25px 40px rgba(0,0,0,.5);
+}
+
+.movie-card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.7)
+    );
+
+    opacity:0;
+    transition:.3s;
+}
+
+.movie-card:hover::before{
+    opacity:1;
+}
+
+.movie-poster{
+    width:100%;
+    aspect-ratio:2/3;
+
+    object-fit:cover;
+    display:block;
+
+    background:
+    var(--bg-secondary);
+}
+
+.movie-info{
+    padding:1rem;
+}
+
+.movie-title{
+    font-size:1rem;
+    font-weight:700;
+
+    margin-bottom:.45rem;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.movie-card_year{
+    color:var(--text-secondary);
+    font-size:.85rem;
+
+    margin-bottom:.7rem;
+}
+
+.movie-card_rating{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:55px;
+
+    padding:.35rem .6rem;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+    font-weight:800;
+}
+
+.rating--good{
+    background:var(--rating-good);
+    color:#fff;
+}
+
+.rating--mid{
+    background:var(--rating-mid);
+    color:#fff;
+}
+
+.rating--bad{
+    background:var(--rating-bad);
+    color:#fff;
+}
+
+/* FAVORITOS */
+
+.hidden{
+    display:none;
+}
+
+.favorites-section{
+    margin-bottom:4rem;
+}
+
+/* MODAL */
+
+.modal-overlay{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    background:
+    rgba(0,0,0,.85);
+
+    backdrop-filter:
+    blur(8px);
+
+    align-items:center;
+    justify-content:center;
+
+    padding:1rem;
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
+.modal{
+    width:100%;
+    max-width:950px;
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    background:
+    var(--bg-secondary);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:24px;
+
+    position:relative;
+
+    animation:
+    modalOpen .3s ease;
+}
+
+@keyframes modalOpen{
+    from{
+        opacity:0;
+        transform:
+        translateY(20px)
+        scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:
+        translateY(0)
+        scale(1);
+    }
+}
+
+.modal-close{
+    position:absolute;
+
+    top:1rem;
+    right:1rem;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    background:
+    rgba(0,0,0,.5);
+
+    color:white;
+
+    font-size:1.4rem;
+
+    z-index:999;
+}
+
+.modal-close:hover{
+    background:var(--accent);
+    color:#111;
+}
+
+.backdrop{
+    width:100%;
+    height:340px;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:
+    24px 24px 0 0;
+}
+
+.modal_body{
+    padding:2rem;
+}
+
+.modal_title{
+    font-size:2rem;
+    font-weight:800;
+
+    margin-bottom:.5rem;
+}
+
+.modal_meta{
+    color:var(--text-secondary);
+
+    margin-bottom:1.2rem;
+
+    font-size:1rem;
+}
+
+.modal_genre{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+
+    margin-bottom:1.5rem;
+}
+
+.genre-tag{
+    background:var(--bg-card);
+
+    border:
+    1px solid var(--border);
+
+    padding:.45rem .9rem;
+
+    border-radius:999px;
+
+    font-size:.85rem;
+}
+
+.modal_overview{
+    line-height:1.9;
+    color:#ddd;
+}
+
+/* LOADING */
+
+.loading,
+.erro-msg{
+    text-align:center;
+
+    padding:4rem 1rem;
+
+    color:var(--text-secondary);
+
+    font-size:1.1rem;
+}
+
+/* SCROLL TOP */
+
+.scroll-top{
+    position:fixed;
+
+    bottom:25px;
+    right:25px;
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    color:#111;
+
+    font-size:1.1rem;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.3);
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:999;
+}
+
+.scroll-top.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.scroll-top:hover{
+    transform:
+    translateY(-4px);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .movies-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .modal{
+        border-radius:20px;
+    }
+
+    .backdrop{
+        height:230px;
+    }
+
+    .modal_body{
+        padding:1.5rem;
+    }
+
+    .modal_title{
+        font-size:1.5rem;
+    }
+}
+
+@media(max-width:500px){
+
+    .movies-grid{
+        gap:1rem;
+    }
+
+    .movie-title{
+        font-size:.92rem;
+    }
+
+    .modal{
+        max-height:95vh;
+    }
+
+    .backdrop{
+        height:180px;
+    }
+
+    .modal_body{
+        padding:1rem;
+    }
+}
