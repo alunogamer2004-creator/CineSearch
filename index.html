@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineSearch</title>
+    <title>CineSearch Premium</title>
 
     <link rel="stylesheet" href="index.css">
 
@@ -11,7 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- JS -->
     <script defer src="index.js"></script>
@@ -19,10 +25,17 @@
 
 <body>
 
+    <!-- HEADER -->
     <header class="header">
+
         <div class="header_inner">
 
-            <h1 class="logo">CineSearch</h1>
+            <div class="header_left">
+                <h1 class="logo">
+                    <i class="fa-solid fa-film"></i>
+                    CineSearch
+                </h1>
+            </div>
 
             <div class="search-box">
 
@@ -30,26 +43,138 @@
                     type="text"
                     id="searchinput"
                     class="search-box_input"
-                    placeholder="Buscar filme ou série"
+                    placeholder="Buscar filme ou série..."
                 >
 
                 <button
                     id="searchbtn"
                     class="search-box_btn">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     Pesquisar
                 </button>
 
             </div>
+
+            <div class="header_actions">
+
+                <button id="favoritesBtn" class="favorites-btn">
+                    <i class="fa-solid fa-heart"></i>
+                    Favoritos
+                </button>
+
+            </div>
+
         </div>
+
     </header>
 
+    <!-- HERO BANNER -->
+    <section class="hero">
+
+        <div class="hero_overlay"></div>
+
+        <div class="hero_content">
+
+            <span class="hero_badge">
+                Em destaque
+            </span>
+
+            <h2 id="heroTitle" class="hero_title">
+                Carregando...
+            </h2>
+
+            <p id="heroOverview" class="hero_description">
+                Buscando filme em destaque...
+            </p>
+
+            <div class="hero_buttons">
+
+                <button id="watchTrailerBtn" class="hero_btn_primary">
+                    <i class="fa-solid fa-play"></i>
+                    Trailer
+                </button>
+
+                <button id="heroDetailsBtn" class="hero_btn_secondary">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Ver detalhes
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="categories">
+
+        <button class="category-btn active" data-genre="popular">
+            🔥 Populares
+        </button>
+
+        <button class="category-btn" data-genre="top_rated">
+            ⭐ Melhor avaliados
+        </button>
+
+        <button class="category-btn" data-genre="now_playing">
+            🎬 Em cartaz
+        </button>
+
+        <button class="category-btn" data-genre="action">
+            💥 Ação
+        </button>
+
+        <button class="category-btn" data-genre="comedy">
+            😂 Comédia
+        </button>
+
+        <button class="category-btn" data-genre="horror">
+            👻 Terror
+        </button>
+
+        <button class="category-btn" data-genre="romance">
+            ❤️ Romance
+        </button>
+
+        <button class="category-btn" data-genre="anime">
+            🇯🇵 Anime
+        </button>
+
+        <button class="category-btn" data-genre="series">
+            📺 Séries
+        </button>
+
+    </section>
+
+    <!-- MAIN -->
     <main class="main">
 
+        <!-- FAVORITOS -->
+        <section id="favoritesSection" class="favorites-section hidden">
+
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    ❤️ Seus Favoritos
+                </h2>
+
+            </div>
+
+            <div id="favoritesGrid" class="movies-grid"></div>
+
+        </section>
+
+        <!-- PRINCIPAL -->
         <section class="section">
 
-            <h2 id="sectionTitle" class="section-title">
-                Filmes em alta
-            </h2>
+            <div class="section-header">
+
+                <h2 id="sectionTitle" class="section-title">
+                    Filmes em alta
+                </h2>
+
+            </div>
 
             <div id="movieGrid" class="movies-grid"></div>
 
@@ -57,22 +182,29 @@
 
     </main>
 
-    <!-- Modal -->
+    <!-- BOTÃO VOLTAR TOPO -->
+    <button id="scrollTopBtn" class="scroll-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- MODAL -->
     <div id="modalOverlay" class="modal-overlay">
 
         <div class="modal">
 
-            <!-- mantém ID original -->
-            <button id="modalClose" class="modal-close">
+            <button
+                id="modalClose"
+                class="modal-close">
+
                 &times;
             </button>
 
-            <!-- mantém ID original -->
-            <div id="modalContent" class="modal_body"></div>
+            <div id="modalContent"></div>
 
         </div>
 
     </div>
 
 </body>
+
 </html>
