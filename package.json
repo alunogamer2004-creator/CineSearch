@@ -1,0 +1,11 @@
+{
+  "name": "cinesearch",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes vercel@latest dev",
+    "test": "node --check index.js && node --test",
+    "check": "npm test"
+  }
+}

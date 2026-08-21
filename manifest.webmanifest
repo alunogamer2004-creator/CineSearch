@@ -1,0 +1,12 @@
+{
+  "name": "CineSearch — Filmes e séries",
+  "short_name": "CineSearch",
+  "description": "Descubra filmes, séries, trailers e onde assistir.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080a10",
+  "theme_color": "#ffb21a",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
