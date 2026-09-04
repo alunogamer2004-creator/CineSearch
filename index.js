@@ -19,7 +19,7 @@ const api=async(path,params={})=>{
 };
 function toast(message){el.toast.textContent=message;el.toast.classList.add('active');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.toast.classList.remove('active'),2500)}
 function isFavorite(id,type){return favorites.some(x=>x.id===id&&typeOf(x)===type)}
-function saveFavorites(){localStorage.setItem('cinesearch:favorites',JSON.stringify(favorites));el.favoritesCount.textContent=favorites.length}
+function saveFavorites(){localStorage.setItem('cinesearch:favorites',JSON.stringify(favorites));el.favoritesCount.textContent=favorites.length;document.dispatchEvent(new CustomEvent('cinesearch:favorites',{detail:favorites}))}
 function toggleFavorite(movie){
  const type=typeOf(movie),index=favorites.findIndex(x=>x.id===movie.id&&typeOf(x)===type);
  if(index>=0){favorites.splice(index,1);toast('Removido da sua lista')}else{favorites.push({...movie,media_type:type});toast('Adicionado à sua lista')}
@@ -121,6 +121,14 @@ $('installBtn').onclick=async()=>{
  await installPrompt.userChoice;
  installPrompt=null;$('installBtn').classList.add('hidden');
 };
+document.addEventListener('cinesearch:replaceFavorites',event=>{
+ favorites=Array.isArray(event.detail)?event.detail:[];
+ localStorage.setItem('cinesearch:favorites',JSON.stringify(favorites));
+ el.favoritesCount.textContent=favorites.length;
+ renderMovies(state.items,el.grid);
+ if(!el.favorites.classList.contains('hidden'))renderFavorites();
+});
+import('./auth.js');
 if('serviceWorker' in navigator){
  addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js'));
 }
